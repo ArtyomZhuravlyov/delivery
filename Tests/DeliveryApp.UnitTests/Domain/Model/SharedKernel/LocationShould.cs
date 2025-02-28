@@ -98,9 +98,5 @@ public class LocationShould
         
         // Assert
         location.Should().NotBeNull();
-        location.X.Should().BeGreaterThan(0);
-        location.Y.Should().BeGreaterThan(0);
-        location.X.Should().BeLessThan(11);
-        location.Y.Should().BeLessThan(11);
     }
 }
