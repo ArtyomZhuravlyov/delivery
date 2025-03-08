@@ -1,0 +1,46 @@
+﻿using DeliveryApp.Core.Domain.Model.CourierAggregate;
+using FluentAssertions;
+using Xunit;
+
+namespace DeliveryApp.UnitTests.Domain.Model.CourierAggregate;
+
+public class CourierStatusShould
+{
+    
+    [Fact]
+    public void ReturnCorrectName()
+    {
+        //Arrange
+        
+        //Act
+
+        //Assert
+        CourierStatus.Free.Name.Should().Be("free");
+        CourierStatus.Busy.Name.Should().Be("Busy");
+    }
+    
+    [Fact]
+    public void BeEqualWhenAllPropertiesIsEqual()
+    {
+        //Arrange
+        
+        //Act
+        // ReSharper disable once EqualExpressionComparison
+        var result = CourierStatus.Free == CourierStatus.Free;
+
+        //Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void BeNotEqualWhenAllPropertiesIsEqual()
+    {
+        //Arrange
+       
+        //Act
+        var result = CourierStatus.Free == CourierStatus.Busy;
+
+        //Assert
+        result.Should().BeFalse();
+    }
+}

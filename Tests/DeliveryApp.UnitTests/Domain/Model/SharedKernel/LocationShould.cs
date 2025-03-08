@@ -82,7 +82,7 @@ public class LocationShould
         var second = Location.Create(x, y).Value;
         
         // Act
-        var result = first.CalculateDistance(second);
+        var result = first.CalculateDistance(second).Value;
         
         // Assert
         result.Should().Be(resultDistance);
