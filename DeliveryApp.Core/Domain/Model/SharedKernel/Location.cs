@@ -36,9 +36,12 @@ public class Location : ValueObject
         return new Location(x, y);
     }
 
-    public int CalculateDistance(Location otherLocation)
+    public Result<int, Error> CalculateDistance(Location otherLocation)
     {
-       return Math.Abs(X - otherLocation.X) + Math.Abs(Y - otherLocation.Y);
+        if(otherLocation is null)
+            return GeneralErrors.ValueIsInvalid(nameof(otherLocation));
+        
+        return Math.Abs(X - otherLocation.X) + Math.Abs(Y - otherLocation.Y);
     }
 
     protected override IEnumerable<IComparable> GetEqualityComponents()
