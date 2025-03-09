@@ -16,7 +16,7 @@ public class CourierStatusShould
 
         //Assert
         CourierStatus.Free.Name.Should().Be("free");
-        CourierStatus.Busy.Name.Should().Be("Busy");
+        CourierStatus.Busy.Name.Should().Be("busy");
     }
     
     [Fact]
