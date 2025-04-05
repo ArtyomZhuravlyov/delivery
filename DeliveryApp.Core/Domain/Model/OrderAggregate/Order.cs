@@ -61,8 +61,7 @@ public class Order : Aggregate<Guid>
     ///     Ошибки, которые может возвращать сущность
     /// </summary>
     [ExcludeFromCodeCoverage]
-
-    public static class Errors
+    private static class Errors
     {
         public static Error CantCompletedNotAssignedOrder()
         {
