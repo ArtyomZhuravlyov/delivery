@@ -149,7 +149,7 @@ public class CourierRepositoryShould : IAsyncLifetime
         await unitOfWork.SaveChangesAsync();
 
         //Act
-        var activeCouriersFromDb = courierRepository.GetAllFree();
+        var activeCouriersFromDb = await courierRepository.GetAllFreeAsync();
 
         //Assert
         var couriersFromDb = activeCouriersFromDb.ToList();

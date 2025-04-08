@@ -33,12 +33,13 @@ public class CourierRepository : ICourierRepository
         return courier;
     }
 
-    public IEnumerable<Courier> GetAllFree()
+    public async Task<IEnumerable<Courier>> GetAllFreeAsync()
     {
-        var couriers = _dbContext
+        var couriers = await _dbContext
             .Couriers
             .Include(x => x.Transport)
-            .Where(o => o.Status.Name == CourierStatus.Free.Name);
+            .Where(o => o.Status.Name == CourierStatus.Free.Name)
+            .ToListAsync();
         return couriers;
     }
 }
