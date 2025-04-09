@@ -30,5 +30,5 @@ public interface ICourierRepository : IRepository<Courier>
     ///     Получить всех свободных курьеров
     /// </summary>
     /// <returns>Курьеры</returns>
-    Task<IEnumerable<Courier>> GetAllFreeAsync();
+    Task<List<Courier>> GetAllFreeAsync();
 }

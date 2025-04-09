@@ -40,7 +40,7 @@ public class OrderRepository : IOrderRepository
         return order;
     }
 
-    public async Task<IEnumerable<Order>> GetAllAssigned()
+    public async Task<List<Order>> GetAllAssigned()
     {
         var orders = await _dbContext
             .Orders

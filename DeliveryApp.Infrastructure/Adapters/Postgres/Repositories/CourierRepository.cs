@@ -33,7 +33,7 @@ public class CourierRepository : ICourierRepository
         return courier;
     }
 
-    public async Task<IEnumerable<Courier>> GetAllFreeAsync()
+    public async Task<List<Courier>> GetAllFreeAsync()
     {
         var couriers = await _dbContext
             .Couriers
