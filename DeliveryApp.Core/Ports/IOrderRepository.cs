@@ -36,5 +36,5 @@ public interface IOrderRepository : IRepository<Order>
     ///     Получить все назначенные заказы
     /// </summary>
     /// <returns>Заказы</returns>
-    Task<IEnumerable<Order>> GetAllAssigned();
+    Task<List<Order>> GetAllAssigned();
 }
