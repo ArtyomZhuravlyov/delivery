@@ -30,7 +30,7 @@ public class Courier
     /// <summary>
     ///     Вид транспорта
     /// </summary>
-    public Guid TransportId { get; set; }
+    public int TransportId { get; set; }
 }
 
 public class Location

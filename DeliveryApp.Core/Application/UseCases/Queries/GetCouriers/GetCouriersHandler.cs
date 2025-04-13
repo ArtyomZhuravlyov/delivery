@@ -22,7 +22,7 @@ public class GetCouriersHandler : IRequestHandler<GetCouriersQuery, GetCouriersR
         await connection.OpenAsync(cancellationToken);
 
         var result = (await connection.QueryAsync<dynamic>(
-            @"SELECT id, name, location_x, location_y FROM public.couriers"
+            @"SELECT id, name, location_x, location_y, transport_id FROM public.couriers"
             , new { })).AsList();
 
         if (result.Count == 0)
