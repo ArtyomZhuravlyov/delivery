@@ -35,11 +35,11 @@
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3" />
         <PackageReference Include="Quartz" Version="3.13.1" />
         <PackageReference Include="Quartz.Extensions.Hosting" Version="3.13.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="7.2.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="7.2.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.2.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.2.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="8.1.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="8.1.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="8.1.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.1.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\DeliveryApp.Core\DeliveryApp.Core.csproj"/>
