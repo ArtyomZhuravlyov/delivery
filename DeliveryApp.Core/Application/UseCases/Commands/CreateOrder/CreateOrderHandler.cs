@@ -11,14 +11,16 @@ public class CreateOrderHandler : IRequestHandler<CreateOrderCommand, UnitResult
 {
     private readonly IOrderRepository _orderRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IGeoClient _geoClient;
 
     /// <summary>
     ///     Ctr
     /// </summary>
-    public CreateOrderHandler(IUnitOfWork unitOfWork, IOrderRepository orderRepository)
+    public CreateOrderHandler(IUnitOfWork unitOfWork, IOrderRepository orderRepository, IGeoClient geoClient)
     {
         _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
+        _geoClient = geoClient ?? throw new ArgumentNullException(nameof(geoClient));
     }
 
     public async Task<UnitResult<Error>> Handle(CreateOrderCommand message, CancellationToken cancellationToken)
@@ -27,8 +29,12 @@ public class CreateOrderHandler : IRequestHandler<CreateOrderCommand, UnitResult
         var getOrderResult = await _orderRepository.GetAsync(message.BasketId);
         if (getOrderResult.HasValue) return UnitResult.Success<Error>();
 
-        // Получаем геопозицию из Geo (пока ставим фэйковое значение)
-        var location = Location.Random;
+        
+        var locationResult = await _geoClient.GetGeolocationAsync(message.Street, cancellationToken);
+        if (locationResult.IsFailure) return locationResult;
+
+        var location = locationResult.Value;
+
 
         // Создаем заказ
         var orderCreateResult = Order.Create(message.BasketId, location);
