@@ -17,11 +17,13 @@ public class CreateOrderCommandShould
 {
     private readonly IOrderRepository _orderRepositoryMock;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IGeoClient _geoClientMock;
 
     public CreateOrderCommandShould()
     {
         _unitOfWork = Substitute.For<IUnitOfWork>();
         _orderRepositoryMock = Substitute.For<IOrderRepository>();
+        _geoClientMock = Substitute.For<IGeoClient>();
     }
 
     private Maybe<Order> EmptyOrder()
@@ -47,10 +49,12 @@ public class CreateOrderCommandShould
             .Returns(Task.FromResult(ExistedOrder()));
         _unitOfWork.SaveChangesAsync()
             .Returns(Task.FromResult(true));
+        _geoClientMock.GetGeolocationAsync(Arg.Any<string>(), CancellationToken.None)
+            .Returns(Task.FromResult(DefaultLocation()));
 
         //Act
         var command = new CreateOrderCommand(Guid.NewGuid(), "улица");
-        var handler = new CreateOrderHandler(_unitOfWork, _orderRepositoryMock);
+        var handler = new CreateOrderHandler(_unitOfWork, _orderRepositoryMock, _geoClientMock);
         var result = await handler.Handle(command, CancellationToken.None);
 
         //Assert
@@ -65,10 +69,12 @@ public class CreateOrderCommandShould
             .Returns(Task.FromResult(EmptyOrder()));
         _unitOfWork.SaveChangesAsync()
             .Returns(Task.FromResult(true));
+        _geoClientMock.GetGeolocationAsync(Arg.Any<string>(), CancellationToken.None)
+            .Returns(Task.FromResult(DefaultLocation()));
 
         //Act
         var command = new CreateOrderCommand(Guid.NewGuid(), "улица");
-        var handler = new CreateOrderHandler(_unitOfWork, _orderRepositoryMock);
+        var handler = new CreateOrderHandler(_unitOfWork, _orderRepositoryMock, _geoClientMock);
         var result = await handler.Handle(command, CancellationToken.None);
 
         //Assert
