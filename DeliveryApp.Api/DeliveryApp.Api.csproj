@@ -53,4 +53,9 @@
         <_ContentIncludedByDefault Remove="Adapters\Http\Contract\src\DeliveryApp.Api.Adapters.Http.Contract.src.OpenApi\Properties\launchSettings.json"/>
         <_ContentIncludedByDefault Remove="Adapters\Http\Contract\src\DeliveryApp.Api.Adapters.Http.Contract.src.OpenApi\wwwroot\openapi-original.json"/>
     </ItemGroup>
+    <ItemGroup>
+      <Protobuf Include="Adapters\Kafka\BasketConfirmed\Contract.proto">
+        <Generator>MSBuild:Compile</Generator>
+      </Protobuf>
+    </ItemGroup>
 </Project>
