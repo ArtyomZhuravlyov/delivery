@@ -124,15 +124,13 @@ builder.Services.Configure<HostOptions>(options =>
 });
 builder.Services.AddHostedService<ConsumerService>();
 
+
 // Domain Event Handlers
 builder.Services.AddScoped<INotificationHandler<OrderAssignedDomainEvent>, OrderAssignedDomainEventHandler>();
 builder.Services.AddScoped<INotificationHandler<OrderCompletedDomainEvent>, OrderCompletedDomainEventHandler>();
 
 // Message Broker Producer
 builder.Services.AddScoped<IMessageBusProducer, Producer>();
-
-
-
 
 
 builder.Services.AddQuartz(configure =>
