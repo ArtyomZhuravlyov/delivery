@@ -41,6 +41,14 @@
     <ItemGroup>
       <None Remove="Adapters\Grpc\GeoService\Contract.proto" />
       <Protobuf Include="Adapters\Grpc\GeoService\Contract.proto" />
+      <Protobuf Include="Adapters\Kafka\OrderStatusChanged\Contract.proto">
+        <GrpcServices>Both</GrpcServices>
+        <Access>Public</Access>
+        <ProtoCompile>True</ProtoCompile>
+        <CompileOutputs>True</CompileOutputs>
+        <OutputDir>obj\Debug\net9.0\</OutputDir>
+        <Generator>MSBuild:Compile</Generator>
+      </Protobuf>
     </ItemGroup>
 
 </Project>
